@@ -1,0 +1,34 @@
+version: '2.32.4'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: meu-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: meu_banco
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha123
+    ports:
+      - "3306:3306"                 # Porta host:container
+    volumes:
+      - mysql_data:/var/lib/mysql   # Volume para persistência
+    networks:
+      - minha_rede                   # Rede customizada
+
+volumes:
+  # Define volumes que serão criados
+  mysql_data:
+    driver: local
+
+networks:
+  # Define redes customizadas
+  minha_rede:
+    driver: bridge  
+
+
+    
+
+
+
